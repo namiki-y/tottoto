@@ -134,12 +134,17 @@ function mainloop(){
   updateobj(jiki);
   if(jiki.length!=0) jiki[0].update();
 
-  ctx.fillStyle = "black";
-  ctx.font = "20px 'Arial'";
-  ctx.fillText("残り　"+ goal + "m",20,20);
+  if(goal>0){
+    ctx.fillStyle = "black";
+    ctx.font = "20px 'Arial'";
+    ctx.fillText("残り　"+ goal + "m",20,20);
+  }
 
   goal--;
-  if(goal==-290) gameClear();
+  if(goal==-290) {
+    bgm.pause();
+    gameClear();
+  }
 }
 
 window.onload = startGamen;
